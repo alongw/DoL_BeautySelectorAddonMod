@@ -295,6 +295,10 @@ export class BeautySelectorAddon implements AddonPluginHookPointEx, BeautySelect
             // clean it
             mod.imgs = [];
 
+            if (mod.imgs) {
+                mod.imgs = mod.imgs.filter((T: any) => !imgList.has(T.path));
+            }
+
             const BS = {
                 name: modName,
                 mod: mod,
@@ -375,6 +379,10 @@ export class BeautySelectorAddon implements AddonPluginHookPointEx, BeautySelect
                         getter: new BeautySelectorAddonImgGetterIndexedDB(modName, modHash.toString(), imagePath, this.imageStore, this.logger),
                     });
                 }
+            }
+
+            if (mod.imgs) {
+                mod.imgs = mod.imgs.filter((T: any) => !imgList.has(T.path));
             }
 
             const BS = {
@@ -497,6 +505,9 @@ export class BeautySelectorAddon implements AddonPluginHookPointEx, BeautySelect
                         }
                     }
 
+                    if (mod.imgs) {
+                        mod.imgs = mod.imgs.filter((T: any) => !imgList.has(T.path));
+                    }
                     BS.typeImg.set(type, imgList);
                     BS.type.push(type);
 
@@ -575,6 +586,9 @@ export class BeautySelectorAddon implements AddonPluginHookPointEx, BeautySelect
                         }
                     }
 
+                    if (mod.imgs) {
+                        mod.imgs = mod.imgs.filter((T: any) => !imgList.has(T.path));
+                    }
                     BS.typeImg.set(type, imgList);
                     BS.type.push(type);
 
